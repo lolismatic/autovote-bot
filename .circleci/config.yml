@@ -5,7 +5,7 @@ jobs:
       - image: selenium/standalone-chrome:3.141.59
     steps:
       - checkout
-      - run: apk add --update nodejs nodejs-npm sed
+      - run: apt-get install nodejs npm
       - run: npm install
       - run:
           name: Vote
