@@ -25,6 +25,7 @@ jobs:
             cat test.js | sed 's/{{PASSWORD}}/'"$SKRATTAR_PASSWORD/g" | sed 's/{{USERNAME}}/'"$SKRATTAR_USERNAME/g" > ./tests/skrattar.tests.js
             cat test.js | sed 's/{{PASSWORD}}/'"$FORLORAR_PASSWORD/g" | sed 's/{{USERNAME}}/'"$FORLORAR_USERNAME/g" > ./tests/forlorar.tests.js
             cat test.js | sed 's/{{PASSWORD}}/'"$REDRIOT_PASSWORD/g"  | sed 's/{{USERNAME}}/'"$REDRIOT_USERNAME/g" > ./tests/redriot.tests.js
+            ls
             npm run test
 workflows:
   version: 2
