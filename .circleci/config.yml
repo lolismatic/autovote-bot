@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - run: sudo apt update
-      - run: sudo apt install nodejs npm
+      - run: sudo apt -y install nodejs npm
       - run: npm install
       - run:
           name: Vote
