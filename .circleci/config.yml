@@ -11,9 +11,12 @@ jobs:
             - node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
             - node-v1-{{ .Branch }}-
             - node-v1-
-      - run: sudo apt update
-      - run: sudo apt -y install nodejs npm
-      - run: npm install
+      - run:
+          name: Dependencies
+          command: |
+            sudo apt update
+            sudo apt -y install nodejs npm
+            npm install
       - save_cache:
           paths:
             - /node_modules  # location depends on npm version
@@ -24,7 +27,7 @@ jobs:
             cat test.js      | sed 's/{{SKRATTAR_PASSWORD}}/'"$SKRATTAR_PASSWORD/g" | sed 's/{{SKRATTAR_USERNAME}}/'"$SKRATTAR_USERNAME/g" > test.exec.js
             cat test.exec.js | sed 's/{{FORLORAR_PASSWORD}}/'"$FORLORAR_PASSWORD/g" | sed 's/{{FORLORAR_USERNAME}}/'"$FORLORAR_USERNAME/g" > test.exec.js
             cat test.exec.js | sed 's/{{REDRIOT_PASSWORD}}/'"$REDRIOT_PASSWORD/g"   | sed 's/{{REDRIOT_USERNAME}}/'"$REDRIOT_USERNAME/g"   > test.exec.js
-      - run: npm run test
+            npm run test
 workflows:
   version: 2
   vote_dalaran_wow:
