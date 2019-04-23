@@ -22,9 +22,9 @@ jobs:
       - run:
           name: Vote
           command: |
-            cat test.js      | sed 's/{{SKRATTAR_PASSWORD}}/'"$SKRATTAR_PASSWORD/g" | sed 's/{{SKRATTAR_USERNAME}}/'"$SKRATTAR_USERNAME/g" > test.exec.js
-            cat test.exec.js | sed 's/{{FORLORAR_PASSWORD}}/'"$FORLORAR_PASSWORD/g" | sed 's/{{FORLORAR_USERNAME}}/'"$FORLORAR_USERNAME/g" > test.exec.js
-            cat test.exec.js | sed 's/{{REDRIOT_PASSWORD}}/'"$REDRIOT_PASSWORD/g"   | sed 's/{{REDRIOT_USERNAME}}/'"$REDRIOT_USERNAME/g"   > test.exec.js
+            cat test.js | sed 's/{{PASSWORD}}/'"$SKRATTAR_PASSWORD/g" | sed 's/{{USERNAME}}/'"$SKRATTAR_USERNAME/g" > ./tests/skrattar.tests.js
+            cat test.js | sed 's/{{PASSWORD}}/'"$FORLORAR_PASSWORD/g" | sed 's/{{USERNAME}}/'"$FORLORAR_USERNAME/g" > ./tests/forlorar.tests.js
+            cat test.js | sed 's/{{PASSWORD}}/'"$REDRIOT_PASSWORD/g"  | sed 's/{{USERNAME}}/'"$REDRIOT_USERNAME/g" > ./tests/redriot.tests.js
             npm run test
 workflows:
   version: 2

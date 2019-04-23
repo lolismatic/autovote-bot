@@ -1,12 +1,12 @@
 // Import requirement packages
 require('chromedriver')
 const chrome = require('selenium-webdriver/chrome');
-const { Builder, Key, By, until, Capabilities } = require('selenium-webdriver');
+const { Builder, Key, By, until } = require('selenium-webdriver');
 
-describe('Login & vote Dalaran Wow', function () {
+describe('Login & vote for {{USERNAME}}', function () {
     let driver;
 
-    beforeEach(async function() {
+    before(async function() {
         driver = await new Builder()
             .forBrowser('chrome')
             .setChromeOptions(new chrome.Options().headless().windowSize({
@@ -18,49 +18,13 @@ describe('Login & vote Dalaran Wow', function () {
 
     // Next, we will write steps for our test.
     // For the element ID, you can find it by open the browser inspect feature.
-    it('Skrattar', async function() {
+    it('voting for {{USERNAME}}', async function() {
         // Load the page
         await driver.get('https://www.dalaran-wow.com/account-log/');
         // Find the search box by id
-        await driver.findElement(By.id('accountName')).sendKeys('{{SKRATTAR_USERNAME}}');
+        await driver.findElement(By.id('accountName')).sendKeys('{{USERNAME}}');
         // Enter keywords and click enter
-        await driver.findElement(By.id('password')).sendKeys('{{SKRATTAR_PASSWORD}}', Key.RETURN);
-        // Wait for the results box by id
-        await driver.wait(until.elementLocated(By.className('service-welcome')), 20000);
-        // We will get the title value and test it
-        await driver.get('https://www.dalaran-wow.com/account/vote/1');
-        await driver.get('https://www.dalaran-wow.com/account/vote/2');
-        await driver.get('https://www.dalaran-wow.com/account/vote/3');
-        await driver.get('https://www.dalaran-wow.com/account/vote/4');
-    });
-
-    // Next, we will write steps for our test.
-    // For the element ID, you can find it by open the browser inspect feature.
-    it('Redriot', async function() {
-        // Load the page
-        await driver.get('https://www.dalaran-wow.com/account-log/');
-        // Find the search box by id
-        await driver.findElement(By.id('accountName')).sendKeys('{{REDRIOT_USERNAME}}');
-        // Enter keywords and click enter
-        await driver.findElement(By.id('password')).sendKeys('{{REDRIOT_PASSWORD}}', Key.RETURN);
-        // Wait for the results box by id
-        await driver.wait(until.elementLocated(By.className('service-welcome')), 20000);
-        // We will get the title value and test it
-        await driver.get('https://www.dalaran-wow.com/account/vote/1');
-        await driver.get('https://www.dalaran-wow.com/account/vote/2');
-        await driver.get('https://www.dalaran-wow.com/account/vote/3');
-        await driver.get('https://www.dalaran-wow.com/account/vote/4');
-    });
-
-    // Next, we will write steps for our test.
-    // For the element ID, you can find it by open the browser inspect feature.
-    it('Forlorar', async function() {
-        // Load the page
-        await driver.get('https://www.dalaran-wow.com/account-log/');
-        // Find the search box by id
-        await driver.findElement(By.id('accountName')).sendKeys('{{FORLORAR_USERNAME}}');
-        // Enter keywords and click enter
-        await driver.findElement(By.id('password')).sendKeys('{{FORLORAR_PASSWORD}}', Key.RETURN);
+        await driver.findElement(By.id('password')).sendKeys('{{PASSWORD}}', Key.RETURN);
         // Wait for the results box by id
         await driver.wait(until.elementLocated(By.className('service-welcome')), 20000);
         // We will get the title value and test it
@@ -71,5 +35,5 @@ describe('Login & vote Dalaran Wow', function () {
     });
 
     // close the browser after running tests
-    afterEach(() => driver && driver.quit());
+    after(() => driver && driver.quit());
 })
