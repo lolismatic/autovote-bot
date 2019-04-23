@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   vote:
     docker:
-      - image: selenium/standalone-chrome:3.141.59
+      - image: circleci/ruby:2.4.2-node-browsers
     steps:
       - checkout
       - restore_cache:
@@ -14,8 +14,6 @@ jobs:
       - run:
           name: Dependencies
           command: |
-            sudo apt update
-            sudo apt -y install nodejs npm
             npm install
       - save_cache:
           paths:
