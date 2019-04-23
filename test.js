@@ -1,13 +1,19 @@
 // Import requirement packages
-require('chromedriver');
-const assert = require('assert');
-const { Builder, Key, By, until } = require('selenium-webdriver');
+require('chromedriver')
+const chrome = require('selenium-webdriver/chrome');
+const { Builder, Key, By, until, Capabilities } = require('selenium-webdriver');
 
 describe('Login & vote Dalaran Wow', function () {
     let driver;
 
     beforeEach(async function() {
-        driver = await new Builder().forBrowser('chrome').build();
+        driver = await new Builder()
+            .forBrowser('chrome')
+            .setChromeOptions(new chrome.Options().headless().windowSize({
+                width: 640,
+                height: 480
+              }))
+            .build();
     });
 
     // Next, we will write steps for our test.
