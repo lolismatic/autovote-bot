@@ -5,9 +5,19 @@ jobs:
       - image: selenium/standalone-chrome:3.141.59
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            # when lock file changes, use increasingly general patterns to restore cache
+            - node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - node-v1-{{ .Branch }}-
+            - node-v1-
       - run: sudo apt update
       - run: sudo apt -y install nodejs npm
       - run: npm install
+      - save_cache:
+          paths:
+            - /node_modules  # location depends on npm version
+          key: node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
       - run:
           name: Vote
           command: |
