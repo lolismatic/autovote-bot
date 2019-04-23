@@ -24,6 +24,7 @@ jobs:
       - run: cat test.js | sed 's/{{PASSWORD}}/'"$FORLORAR_PASSWORD/g" | sed 's/{{USERNAME}}/'"$FORLORAR_USERNAME/g" > ./tests/forlorar.tests.js
       - run: cat test.js | sed 's/{{PASSWORD}}/'"$REDRIOT_PASSWORD/g"  | sed 's/{{USERNAME}}/'"$REDRIOT_USERNAME/g" > ./tests/redriot.tests.js
       - run: ls
+      - run: chmod -R u+x .
       - run: npm run test
 workflows:
   version: 2
