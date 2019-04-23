@@ -1,0 +1,15 @@
+version: 2.1
+jobs:
+  vote:
+    docker:
+      - image: selenium/standalone-chrome:3.141.59
+    steps:
+      - checkout
+      - run: npm install
+      - run: cat test.js | sed 's/{{PASSWORD}}/'"$PASSWORD/g" | sed 's/{{USERNAME}}/'"$USERNAME/g" > test.exec.js
+      - run: npm run test
+workflows:
+  version: 2
+  vote_dalaran_wow:
+    jobs:
+      - vote

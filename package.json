@@ -1,0 +1,26 @@
+{
+  "name": "autovote-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "test": "mocha --recursive --timeout 20000 test.exec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lolismatic/autovote-bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lolismatic/autovote-bot/issues"
+  },
+  "homepage": "https://github.com/lolismatic/autovote-bot#readme",
+  "dependencies": {
+    "chromedriver": "^73.0.0",
+    "selenium-webdriver": "^4.0.0-alpha.1"
+  },
+  "devDependencies": {
+    "mocha": "^6.1.4"
+  }
+}
