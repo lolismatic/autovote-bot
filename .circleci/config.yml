@@ -28,6 +28,73 @@ jobs:
       - run: npm run test
 workflows:
   version: 2
-  vote_dalaran_wow:
+  sunday:
+    triggers:
+      - schedule:
+          cron: "0 0,13 * * 0"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - vote
+  monday:
+    triggers:
+      - schedule:
+          cron: "0 2,15 * * 1"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - vote
+  thuesday:
+    triggers:
+      - schedule:
+          cron: "0 4,17 * * 2"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - vote
+  wednesday:
+    triggers:
+      - schedule:
+          cron: "0 6,19 * * 3"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - vote
+  thursday:
+    triggers:
+      - schedule:
+          cron: "0 8,21 * * 4"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - vote
+  friday:
+    triggers:
+      - schedule:
+          cron: "0 10,23 * * 5"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - vote
+  saturday:
+    triggers:
+      - schedule:
+          cron: "30 11 * * 6"
+          filters:
+            branches:
+              only:
+                - master
     jobs:
       - vote
