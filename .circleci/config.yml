@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   vote:
     docker:
-      - image: circleci/ruby:2.4.2-node-browsers
+      - image: circleci/node:10.2.1-browsers
     steps:
       - checkout
       - restore_cache:
